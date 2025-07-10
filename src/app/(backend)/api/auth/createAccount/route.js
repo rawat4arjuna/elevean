@@ -39,9 +39,15 @@ export async function POST(req) {
         password: hashedPassword,
       },
     });
-    return new Response(JSON.stringify(newUser), {
-      status: 201,
-    });
+    return new Response(
+      {
+        success: true,
+        message: "User created successfully",
+      },
+      {
+        status: 201,
+      }
+    );
   } catch (error) {
     console.error("Error creating user:", error);
     return new Response(
