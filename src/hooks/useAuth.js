@@ -14,7 +14,6 @@ export default function useAuth() {
         router.push("/dashboard");
       }
     });
-    
   };
   return {
     createAccount,
