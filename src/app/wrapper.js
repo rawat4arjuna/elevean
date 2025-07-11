@@ -3,8 +3,8 @@ import GlobalSnackbar from "@/global/GlobalSnackBar";
 import theme from "@/theme/theme";
 import { CssBaseline, ThemeProvider, Box } from "@mui/material";
 import React, { useMemo } from "react";
-import Sidebar from "@/features/common/Sidebar";
-import Topbar from "@/features/common/Topbar";
+import Sidebar from "@/common/Sidebar";
+import Topbar from "@/common/Topbar";
 import Cookies from "js-cookie";
 import { usePathname } from "next/navigation";
 

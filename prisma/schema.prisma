@@ -21,3 +21,14 @@ model User {
   email    String @unique
 }
 
+model Asset {
+  id           Int      @id @default(autoincrement()) @map("Asset_id")
+  name         String
+  description  String?
+  price        Float
+  owner        String
+  purchaseDate DateTime
+  assetUrl     String? // for SVG or asset URL
+  type         String
+}
+

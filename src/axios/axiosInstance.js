@@ -1,6 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
+import Cookies from "js-cookie";
 
-const API_BASE_URL = '/api'; // Replace with your actual API base URL
+const API_BASE_URL = "/api"; // Replace with your actual API base URL
 
 const API = axios.create({
   baseURL: API_BASE_URL,
@@ -9,7 +10,7 @@ const API = axios.create({
 API.interceptors.request.use(
   (config) => {
     // Implement logic to get your authentication token (e.g., from localStorage, a cookie, or a state management solution)
-    const token = localStorage.getItem('authToken'); // Example: getting token from localStorage
+    const token = Cookies.get("authToken"); // Example: getting token from localStorage
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -29,9 +30,9 @@ API.interceptors.response.use(
   (error) => {
     if (error.response && error.response.status === 401) {
       // Handle 401 Unauthorized errors (e.g., redirect to login page, refresh token)
-      console.error('Unauthorized request. Redirecting to login...');
+      console.error("Unauthorized request. Redirecting to login...");
       // Example: Redirect to login page
-      // window.location.href = '/login'; 
+      // window.location.href = '/login';
     }
     return Promise.reject(error);
   }

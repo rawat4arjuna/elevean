@@ -15,13 +15,12 @@ export async function POST(req) {
         email: email,
       },
     });
-    console.log("User found:", user, password);
     if (user && (await bcrypt.compare(password, user.password))) {
       // Successful login
       const token = jwt.sign(
         { id: user.id, username: user.username },
         jwtSecret,
-        { expiresIn: "1h" }
+        { expiresIn: "7d" }
       ); // Token expires in 1 hour
 
       return NextResponse.json(
